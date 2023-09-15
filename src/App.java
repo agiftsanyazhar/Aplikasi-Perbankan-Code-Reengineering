@@ -58,7 +58,7 @@ public class App {
                 System.out.print("Deposit Your First Balance: ");
                 int balance = scanner.nextInt();
 
-                // Menyimpan Akun
+                // Menyimpan akun
                 register.setName(name);
                 register.setEmail(email);
                 register.setPassword(password);
@@ -66,13 +66,15 @@ public class App {
                 register.setCardType(cardType);
                 register.setBalance(balance);
 
-                // Create an Akun object using the constructor
-                Akun akun = new Akun(name, email, cardType, balance);
+                // Buat akun dari constructor yang extends Register
+                Akun akun = new Akun(name, email, password, cardType, balance);
 
                 System.out.println("");
                 System.out.println("Account created successfully. Please login");
                 System.out.println("Name: " + akun.getName());
                 System.out.println("Email: " + akun.getEmail());
+                System.out.println("Password: " + akun.getPassword());
+                System.out.println("Password Hash: " + akun.getGeneratedPassword());
                 System.out.println("Card Type: " + akun.getCardType());
                 System.out.println("Account Number: " + akun.getAccountNumber());
                 System.out.println("Account Balance: " + akun.getBalance());

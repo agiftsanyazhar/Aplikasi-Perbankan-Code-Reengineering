@@ -5,7 +5,7 @@ public class Akun extends Register {
     // private int accountNumber;
     // private int balance;
 
-    public Akun(String name, String email, String cardType, int balance) {
+    public Akun(String name, String email, String password, String cardType, int balance) {
         // this.name = name;
         // this.email = email;
         // this.cardType = cardType;
@@ -14,6 +14,8 @@ public class Akun extends Register {
 
         setName(name);
         setEmail(email);
+        setPassword(password);
+        setGeneratedPassword(password);
         setCardType(cardType);
         setAccountNumber(accountNumber);
         setBalance(balance);
