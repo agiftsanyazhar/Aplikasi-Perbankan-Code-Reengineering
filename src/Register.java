@@ -82,7 +82,7 @@ public class Register {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        System.out.println(generatedPassword);
+        // System.out.println(generatedPassword);
     }
 
     public void setCardType(String newCardType) {
