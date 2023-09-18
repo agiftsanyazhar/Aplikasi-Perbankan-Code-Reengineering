@@ -1,7 +1,5 @@
-import java.io.FileWriter;
-import java.io.Writer;
+import java.time.LocalDateTime;
 import java.util.Scanner;
-import java.io.IOException;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -20,7 +18,6 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         int inputOption;
-        boolean registered = false;
         boolean loggedIn = false;
 
         System.out.println("==============================");
@@ -28,7 +25,7 @@ public class App {
         System.out.println("==============================");
 
         System.out.println("Welcome to the BankMo");
-        System.out.println("[1] Login");
+        System.out.println("[1] Login \t ==> GA JADI");
         System.out.println("[2] Register");
         System.out.println("[3] Exit");
         System.out.println("");
@@ -55,6 +52,8 @@ public class App {
 
                 // System.out.print("Enter Your Password: ");
                 // String password = scanner.nextLine();
+
+                System.out.println("Sorry! Under construction");
 
                 break;
             case 2:
@@ -86,10 +85,10 @@ public class App {
                 // Buat akun sukses
                 System.out.println("");
                 System.out.println("Account created successfully. Please login");
+                System.out.println("Account Number: " + register.getAccountNumber());
+                System.out.println("Card Type: " + register.getCardType());
                 System.out.println("Name: " + register.getName());
                 System.out.println("Email: " + register.getEmail());
-                System.out.println("Card Type: " + register.getCardType());
-                System.out.println("Account Number: " + register.getAccountNumber());
                 System.out.println("Account Balance: " + register.getBalance());
 
                 // // HASIL BARD! MASIH KURANG PAHAM. JANGAN DIUNCOMMENT
@@ -139,7 +138,7 @@ public class App {
 
                     if (!(emailLogin.equals(register.getEmail()) && passwordLogin.equals(register.getPassword()))) {
                         System.out.println("");
-                        System.out.println("Login failed. Try again.");
+                        System.out.println("Login failed. Try again");
                         System.out.println("[1] Retry login");
                         System.out.println("[2] Exit");
 
@@ -148,7 +147,7 @@ public class App {
 
                         if (choice.equals("2")) {
                             System.out.println("");
-                            System.out.println("Exiting login.");
+                            System.out.println("Exiting login");
                             break;
                         }
                     } else {
@@ -161,12 +160,13 @@ public class App {
                 System.out.println("Welcome " + register.getName() + "!");
                 System.out.println("==============================");
 
-                // do {
+                do {
                     System.out.println("[1] Account Info");
                     System.out.println("[2] Deposit");
                     System.out.println("[3] Withdraw");
                     System.out.println("[4] Transfer");
-                    System.out.println("[5] Exit");
+                    System.out.println("[5] History");
+                    System.out.println("[6] Exit");
                     System.out.println("");
 
                     System.out.print("Enter an option: ");
@@ -174,7 +174,22 @@ public class App {
 
                     scanner.nextLine();
                     System.out.println("");
-                // } while (loggedIn && );
+
+                    switch (inputOption) {
+                        case 1:
+                            Transaksi transaksi = new Transaksi(register, LocalDateTime.now(), register.getBalance());
+                            transaksi.infoAkun();
+                            break;
+                        case 6:
+                            System.out.println("");
+                            System.out.println("See you soon...");
+
+                            break;
+                        default:
+                            System.out.println("Invalid option. Try again");
+                            break;
+                    }
+                } while (loggedIn && inputOption < 7);
 
                 break;
             case 3:
