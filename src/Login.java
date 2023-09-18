@@ -1,23 +1,11 @@
-public class Login extends Register {
-    // protected String email;
-    // protected String password;
-    // protected String cardType;
-    // protected int accountNumber;
-    // protected int balance;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
-    public Login(String name, String email, String password, String cardType, int balance) {
-        // this.name = name;
-        // this.email = email;
-        // this.cardType = cardType;
-        // this.accountNumber = accountNumber;
-        // this.balance = balance;
+public class Login extends Akun {
 
-        // getName(name);
-        // getEmail(email);
-        // getPassword(password);
-        // getGeneratedPassword(password);
-        // getCardType(cardType);
-        // getAccountNumber(accountNumber);
-        // getBalance(balance);
+    public Login(String email, String password) {
+        super(email, password);
     }
+
 }
