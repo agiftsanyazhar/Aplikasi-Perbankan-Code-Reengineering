@@ -155,7 +155,7 @@ public class App {
                     }
                 }
 
-                System.out.println("\n");
+                System.out.println("");
                 System.out.println("==============================");
                 System.out.println("Welcome " + register.getName() + "!");
                 System.out.println("==============================");
@@ -175,10 +175,24 @@ public class App {
                     scanner.nextLine();
                     System.out.println("");
 
+                    Transaksi transaksi = new Transaksi(register, LocalDateTime.now(), register.getBalance());
+
                     switch (inputOption) {
                         case 1:
-                            Transaksi transaksi = new Transaksi(register, LocalDateTime.now(), register.getBalance());
                             transaksi.infoAkun();
+                            break;
+                        case 2:
+                            System.out.print("Deposit amount: ");
+                            int deposit = scanner.nextInt();
+
+                            scanner.nextLine();
+                            System.out.println("Processing...");
+
+                            transaksi.deposit(deposit);
+
+                            break;
+                        case 5:
+                            transaksi.displayHistory();
                             break;
                         case 6:
                             System.out.println("");

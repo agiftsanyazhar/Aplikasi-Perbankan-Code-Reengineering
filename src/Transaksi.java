@@ -1,23 +1,20 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Transaksi extends Nasabah {
     private LocalDateTime date;
     private String transactionType;
     private String description;
-    private int accountNumber;
-    private int balance;
     private int amount;
-    private List<String> history;
+    private ArrayList<String> history;
     private Nasabah nasabah;
 
-    public Transaksi(Nasabah nasabah, LocalDateTime newDate, int newAmount) {
-        super(nasabah.getEmail(), nasabah.getPassword());
+    public Transaksi(Nasabah newNasabah, LocalDateTime newDate, int newAmount) {
+        super(newNasabah.getEmail(), newNasabah.getPassword());
         this.date = newDate;
         this.amount = newAmount;
         this.history = new ArrayList<>();
-        this.nasabah = nasabah;
+        this.nasabah = newNasabah;
     }
 
     // Getter
@@ -33,16 +30,12 @@ public class Transaksi extends Nasabah {
         return description;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
     public int getAmount() {
         return amount;
+    }
+
+    public ArrayList<String> getHistory() {
+        return history;
     }
 
     // Setter
@@ -69,6 +62,22 @@ public class Transaksi extends Nasabah {
         this.description = newDescription;
     }
 
+    public void deposit(int newAmount) {
+        if (newAmount > 0) {
+            nasabah.setBalance(nasabah.getBalance() + newAmount);
+            // nasabah.balance += newAmount;
+            history.add("Deposit: " + newAmount + " | Date: " + LocalDateTime.now());
+
+            System.out.println("Transaction added to history: " + history);
+            System.out.println("");
+
+            // System.out.println(nasabah.getBalance());
+            // System.out.println("Date: " + LocalDateTime.now());
+
+            // displayHistory();
+        }
+    }
+
     public void infoAkun() {
         System.out.println("==============================");
         System.out.println("Account Info");
@@ -83,10 +92,12 @@ public class Transaksi extends Nasabah {
 
     // Menampilkan history
     public void displayHistory() {
-        System.out.println("Transaction History for Account " + accountNumber + ":");
+        System.out.println("Displaying history");
+        System.out.println(history);
         for (String transaction : history) {
             System.out.println(transaction);
         }
+        System.out.println("");
     }
 
 }
