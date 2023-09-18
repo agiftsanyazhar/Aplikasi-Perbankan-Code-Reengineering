@@ -195,15 +195,13 @@ public class App {
                             transaksi.displayHistory();
                             break;
                         case 6:
-                            System.out.println("");
                             System.out.println("See you soon...");
-
                             break;
                         default:
                             System.out.println("Invalid option. Try again");
                             break;
                     }
-                } while (loggedIn && inputOption < 7);
+                } while (loggedIn && inputOption != 6);
 
                 break;
             case 3:

@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Transaksi extends Nasabah {
@@ -66,7 +67,10 @@ public class Transaksi extends Nasabah {
         if (newAmount > 0) {
             nasabah.setBalance(nasabah.getBalance() + newAmount);
             // nasabah.balance += newAmount;
-            history.add("Deposit: " + newAmount + " | Date: " + LocalDateTime.now());
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            history.add("Deposit: " + newAmount + " | Date: " + dtf.format(now));
 
             System.out.println("Transaction added to history: " + history);
             System.out.println("");
@@ -92,8 +96,9 @@ public class Transaksi extends Nasabah {
 
     // Menampilkan history
     public void displayHistory() {
-        System.out.println("Displaying history");
-        System.out.println(history);
+        System.out.println("==============================");
+        System.out.println("Displaying History");
+        System.out.println("==============================");
         for (String transaction : history) {
             System.out.println(transaction);
         }
