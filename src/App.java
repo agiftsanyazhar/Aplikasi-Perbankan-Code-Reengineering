@@ -28,9 +28,9 @@ public class App {
         System.out.println("==============================");
 
         System.out.println("Welcome to the BankMo");
-        System.out.println("1. Login");
-        System.out.println("2. Register");
-        System.out.println("3. Exit");
+        System.out.println("[1] Login");
+        System.out.println("[2] Register");
+        System.out.println("[3] Exit");
         System.out.println("");
 
         System.out.print("Enter an option: ");
@@ -115,7 +115,7 @@ public class App {
                 // String json = sb.toString();
 
                 // // Save the String object to a file
-                // Writer writer = new FileWriter("akun.json");
+                // Writer writer = new FileWriter("nasabah.json");
                 // writer.write(json);
                 // writer.close();
 
@@ -144,12 +144,10 @@ public class App {
                         System.out.println("[2] Exit");
 
                         System.out.print("Your choice [1-2]: ");
-                        int choice = scanner.nextInt();
+                        String choice = scanner.nextLine();
 
-                        System.out.println("");
-                        scanner.nextLine();
-
-                        if (choice == 2) {
+                        if (choice.equals("2")) {
+                            System.out.println("");
                             System.out.println("Exiting login.");
                             break;
                         }
@@ -158,14 +156,26 @@ public class App {
                     }
                 }
 
-                Akun akun = new Akun(email, password);
+                System.out.println("\n");
+                System.out.println("==============================");
+                System.out.println("Welcome " + register.getName() + "!");
+                System.out.println("==============================");
 
                 do {
+                    System.out.println("Welcome to the BankMo");
+                    System.out.println("[1] Account Info");
+                    System.out.println("[2] Deposit");
+                    System.out.println("[3] Withdraw");
+                    System.out.println("[4] Transfer");
+                    System.out.println("[5] Exit");
                     System.out.println("");
-                    System.out.println("==============================");
-                    System.out.println("Welcome " + register.getName() + "!");
-                    System.out.println("==============================");
-                } while (loggedIn);
+
+                    System.out.print("Enter an option: ");
+                    inputOption = scanner.nextInt();
+
+                    scanner.nextLine();
+                    System.out.println("");
+                } while (loggedIn && );
 
                 break;
             case 3:
