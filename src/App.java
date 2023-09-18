@@ -25,7 +25,7 @@ public class App {
         System.out.println("==============================");
 
         System.out.println("Welcome to the BankMo");
-        System.out.println("[1] Login \t ==> GA JADI");
+        System.out.println("[1] Login ==> GA JADI");
         System.out.println("[2] Register");
         System.out.println("[3] Exit");
         System.out.println("");
