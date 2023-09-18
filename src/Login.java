@@ -12,12 +12,12 @@ public class Login extends Register {
         // this.accountNumber = accountNumber;
         // this.balance = balance;
 
-        getName(name);
-        getEmail(email);
-        getPassword(password);
-        getGeneratedPassword(password);
-        getCardType(cardType);
-        getAccountNumber(accountNumber);
-        getBalance(balance);
+        // getName(name);
+        // getEmail(email);
+        // getPassword(password);
+        // getGeneratedPassword(password);
+        // getCardType(cardType);
+        // getAccountNumber(accountNumber);
+        // getBalance(balance);
     }
 }

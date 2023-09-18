@@ -35,7 +35,7 @@ public class App {
 
         switch (inputOption) {
             case 1:
-                Login login = new Login();
+                // Login login = new Login();
                 break;
             case 2:
                 Register register = new Register();
