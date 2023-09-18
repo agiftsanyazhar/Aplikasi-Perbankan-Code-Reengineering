@@ -161,8 +161,7 @@ public class App {
                 System.out.println("Welcome " + register.getName() + "!");
                 System.out.println("==============================");
 
-                do {
-                    System.out.println("Welcome to the BankMo");
+                // do {
                     System.out.println("[1] Account Info");
                     System.out.println("[2] Deposit");
                     System.out.println("[3] Withdraw");
@@ -175,7 +174,7 @@ public class App {
 
                     scanner.nextLine();
                     System.out.println("");
-                } while (loggedIn && );
+                // } while (loggedIn && );
 
                 break;
             case 3:
