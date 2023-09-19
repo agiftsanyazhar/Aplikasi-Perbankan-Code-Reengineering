@@ -21,6 +21,9 @@ public class App {
         boolean loggedIn = false;
 
         System.out.println("==============================");
+        System.out.println("Agiftsany Azhar - 3123640029!");
+        System.out.println("==============================");
+        System.out.println("==============================");
         System.out.println("Welcome!");
         System.out.println("==============================");
 
