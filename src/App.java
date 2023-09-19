@@ -90,6 +90,8 @@ public class App {
                 System.out.println("Name: " + register.getName());
                 System.out.println("Email: " + register.getEmail());
                 System.out.println("Account Balance: " + register.getBalance());
+                // System.out.println("Password: " + register.getPassword());
+                // System.out.println("Generated Password: " + register.getGeneratedPassword());
 
                 // // HASIL BARD! MASIH KURANG PAHAM. JANGAN DIUNCOMMENT
                 // // Create a new StringBuilder object
@@ -189,6 +191,28 @@ public class App {
                             System.out.println("Processing...");
 
                             transaksi.deposit(deposit);
+
+                            break;
+                        case 3:
+                            System.out.print("Withdraw amount: ");
+                            int withdraw = scanner.nextInt();
+
+                            scanner.nextLine();
+                            System.out.println("Processing...");
+
+                            transaksi.withdraw(withdraw);
+
+                            break;
+                        case 4:
+                            System.out.print("Transfer to (==> GA GUNA KARENA GATAU HARUS VALIDASI KEMANA?): ");
+                            int transferTo = scanner.nextInt();
+                            System.out.print("Transfer amount: ");
+                            int trasnfer = scanner.nextInt();
+
+                            scanner.nextLine();
+                            System.out.println("Processing...");
+
+                            transaksi.transfer(trasnfer);
 
                             break;
                         case 5:
