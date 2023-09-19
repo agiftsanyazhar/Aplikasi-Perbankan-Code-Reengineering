@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.Writer;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -17,11 +19,10 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
 
-        int inputOption;
         boolean loggedIn = false;
 
         System.out.println("==============================");
-        System.out.println("Agiftsany Azhar - 3123640029!");
+        System.out.println("Agiftsany Azhar - 3123640029");
         System.out.println("==============================");
         System.out.println("==============================");
         System.out.println("Welcome!");
@@ -33,8 +34,8 @@ public class App {
         System.out.println("[3] Exit");
         System.out.println("");
 
-        System.out.print("Enter an option: ");
-        inputOption = scanner.nextInt();
+        System.out.print("Your Choice [1-3]: ");
+        int inputOption = scanner.nextInt();
 
         scanner.nextLine();
         System.out.println("");
@@ -76,7 +77,7 @@ public class App {
                 System.out.println("Which Card Type Do You Want The Account To Be Initialized In?:");
                 System.out.println("[1] Debit\r\n" + //
                         "[2] Credit");
-                System.out.print("Your choice [1-2]: ");
+                System.out.print("Your Choice [1-2]: ");
                 String cardType = scanner.nextLine();
 
                 System.out.print("Deposit Your First Balance: ");
@@ -96,32 +97,31 @@ public class App {
                 // System.out.println("Password: " + register.getPassword());
                 // System.out.println("Generated Password: " + register.getGeneratedPassword());
 
-                // // HASIL BARD! MASIH KURANG PAHAM. JANGAN DIUNCOMMENT
-                // // Create a new StringBuilder object
-                // StringBuilder sb = new StringBuilder();
+                // HASIL BARD! MASIH KURANG PAHAM. JANGAN DIUNCOMMENT
+                // Create a new StringBuilder object
+                StringBuilder sb = new StringBuilder();
 
-                // // Append the fields of the Register object to the StringBuilder object in
-                // // JSON
-                // // format
-                // sb.append("[");
-                // sb.append("{");
-                // sb.append("\"id\": \"").append(register.getId()).append("\",");
-                // sb.append("\"name\": \"").append(register.getName()).append("\",");
-                // sb.append("\"email\": \"").append(register.getEmail()).append("\",");
-                // sb.append("\"cardType\": \"").append(register.getCardType()).append("\",");
-                // sb.append("\"accountNumber\":
-                // \"").append(register.getAccountNumber()).append("\",");
-                // sb.append("\"balance\": ").append(register.getBalance());
-                // sb.append("}");
-                // sb.append("]");
+                // Append the fields of the Register object to the StringBuilder object in JSON
+                // format
+                sb.append("[");
+                sb.append("{");
+                sb.append("\"id\": \"").append(register.getId()).append("\",");
+                sb.append("\"name\": \"").append(register.getName()).append("\",");
+                sb.append("\"email\": \"").append(register.getEmail()).append("\",");
+                sb.append("\"password\": \"").append(register.getGeneratedPassword()).append("\",");
+                sb.append("\"cardType\": \"").append(register.getCardType()).append("\",");
+                sb.append("\"accountNumber\":\"").append(register.getAccountNumber()).append("\",");
+                sb.append("\"balance\": ").append(register.getBalance());
+                sb.append("}");
+                sb.append("]");
 
-                // // Convert the StringBuilder object to a String object
-                // String json = sb.toString();
+                // Convert the StringBuilder object to a String object
+                String json = sb.toString();
 
-                // // Save the String object to a file
-                // Writer writer = new FileWriter("nasabah.json");
-                // writer.write(json);
-                // writer.close();
+                // Save the String object to a file
+                Writer writer = new FileWriter("nasabah.json");
+                writer.write(json);
+                writer.close();
 
                 scanner.nextLine();
                 System.out.println("");
@@ -147,10 +147,10 @@ public class App {
                         System.out.println("[1] Retry login");
                         System.out.println("[2] Exit");
 
-                        System.out.print("Your choice [1-2]: ");
-                        String choice = scanner.nextLine();
+                        System.out.print("Your Choice [1-2]: ");
+                        int choice = scanner.nextInt();
 
-                        if (choice.equals("2")) {
+                        if (choice == 2) {
                             System.out.println("");
                             System.out.println("Exiting login");
                             break;
@@ -165,6 +165,9 @@ public class App {
                 System.out.println("Welcome " + register.getName() + "!");
                 System.out.println("==============================");
 
+                String transactionType;
+                String description;
+
                 do {
                     System.out.println("[1] Account Info");
                     System.out.println("[2] Deposit");
@@ -174,61 +177,82 @@ public class App {
                     System.out.println("[6] Exit");
                     System.out.println("");
 
-                    System.out.print("Enter an option: ");
-                    inputOption = scanner.nextInt();
+                    System.out.print("Your Choice [1-6]: ");
+                    transactionType = scanner.nextLine();
 
-                    scanner.nextLine();
                     System.out.println("");
 
-                    Transaksi transaksi = new Transaksi(register, LocalDateTime.now(), register.getBalance());
+                    Transaksi transaksi = new Transaksi(register, LocalDateTime.now(), transactionType);
 
-                    switch (inputOption) {
-                        case 1:
+                    switch (transactionType) {
+                        case "1":
                             transaksi.infoAkun();
                             break;
-                        case 2:
-                            System.out.print("Deposit amount: ");
+                        case "2":
+                            System.out.print("Deposit Amount: ");
                             int deposit = scanner.nextInt();
-
                             scanner.nextLine();
+                            System.out.println("Enter Your Description: ");
+                            description = scanner.nextLine();
+
+                            System.out.println("");
+                            System.out.print("Press any key to continue");
+                            scanner.nextLine();
+
+                            System.out.println("");
                             System.out.println("Processing...");
 
-                            transaksi.deposit(deposit);
+                            transaksi.deposit(deposit, description);
 
                             break;
-                        case 3:
-                            System.out.print("Withdraw amount: ");
+                        case "3":
+                            System.out.print("Withdraw Amount: ");
                             int withdraw = scanner.nextInt();
-
                             scanner.nextLine();
+                            System.out.println("Enter Your Description: ");
+                            description = scanner.nextLine();
+
+                            System.out.println("");
+                            System.out.print("Press any key to continue");
+                            scanner.nextLine();
+
+                            System.out.println("");
                             System.out.println("Processing...");
 
-                            transaksi.withdraw(withdraw);
+                            transaksi.withdraw(withdraw, description);
 
                             break;
-                        case 4:
-                            System.out.print("Transfer to (==> GA GUNA KARENA GATAU HARUS VALIDASI KEMANA?): ");
-                            int transferTo = scanner.nextInt();
-                            System.out.print("Transfer amount: ");
+                        case "4":
+                            // System.out.print("Transfer To (==> GA GUNA KARENA GATAU HARUS VALIDASI
+                            // KEMANA?): ");
+                            // int transferTo = scanner.nextInt();
+                            System.out.print("Transfer Amount: ");
                             int trasnfer = scanner.nextInt();
-
                             scanner.nextLine();
+                            System.out.println("Enter Your Description: ");
+                            description = scanner.nextLine();
+
+                            System.out.println("");
+                            System.out.print("Press any key to continue");
+                            scanner.nextLine();
+
+                            System.out.println("");
                             System.out.println("Processing...");
 
-                            transaksi.transfer(trasnfer);
+                            transaksi.transfer(trasnfer, description);
 
                             break;
-                        case 5:
+                        case "5":
                             transaksi.displayHistory();
                             break;
-                        case 6:
+                        case "6":
                             System.out.println("See you soon...");
                             break;
                         default:
                             System.out.println("Invalid option. Try again");
                             break;
                     }
-                } while (loggedIn && inputOption != 6);
+                } while (loggedIn && transactionType != "6");
 
                 break;
             case 3:

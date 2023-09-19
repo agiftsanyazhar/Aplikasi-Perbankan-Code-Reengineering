@@ -10,12 +10,12 @@ public class Transaksi extends Nasabah {
     private ArrayList<String> history;
     private Nasabah nasabah;
 
-    public Transaksi(Nasabah newNasabah, LocalDateTime newDate, int newAmount) {
+    public Transaksi(Nasabah newNasabah, LocalDateTime newDate, String transactionType) {
         super(newNasabah.getEmail(), newNasabah.getPassword());
-        this.date = newDate;
-        this.amount = newAmount;
-        this.history = new ArrayList<>();
         this.nasabah = newNasabah;
+        this.date = newDate;
+        setTransactionType(transactionType);
+        this.history = new ArrayList<>();
     }
 
     // Getter
@@ -63,13 +63,15 @@ public class Transaksi extends Nasabah {
         this.description = newDescription;
     }
 
-    public void deposit(int newAmount) {
+    public void deposit(int newAmount, String description) {
         if (newAmount > 0) {
             nasabah.setBalance(nasabah.getBalance() + newAmount);
             // nasabah.balance += newAmount;
+            setDescription(description);
 
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            history.add("Deposit: " + newAmount + " | Date: " + dtf.format(date));
+            history.add(getTransactionType() + ": " + newAmount + " | Description: " + getDescription() + " | Date: "
+                    + dtf.format(getDate()));
 
             System.out.println("Transaction added to history: " + history);
             System.out.println("");
@@ -81,30 +83,37 @@ public class Transaksi extends Nasabah {
         }
     }
 
-    public void withdraw(int newAmount) {
+    public void withdraw(int newAmount, String description) {
         if (newAmount > 0 && nasabah.getBalance() >= newAmount) {
             nasabah.setBalance(nasabah.getBalance() - newAmount);
+            setDescription(description);
+
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            history.add("Withdraw: " + newAmount + " | Date: " + dtf.format(date));
+            history.add(getTransactionType() + ": " + newAmount + " | Description: " + getDescription() + " | Date: "
+                    + dtf.format(getDate()));
 
             System.out.println("Transaction added to history: " + history);
             System.out.println("");
-
         } else {
             System.out.println("Invalid withdrawal amount or insufficient balance.");
+            System.out.println("");
         }
     }
 
-    public void transfer(int newAmount) {
+    public void transfer(int newAmount, String description) {
         if (newAmount > 0 && nasabah.getBalance() >= newAmount) {
             nasabah.setBalance(nasabah.getBalance() - newAmount);
+            setDescription(description);
+
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            history.add("Transfer: " + newAmount + " | Date: " + dtf.format(date));
+            history.add(getTransactionType() + ": " + newAmount + " | Description: " + getDescription() + " | Date: "
+                    + dtf.format(getDate()));
 
             System.out.println("Transaction added to history: " + history);
             System.out.println("");
         } else {
-            System.out.println("Invalid withdrawal amount or insufficient balance.");
+            System.out.println("Invalid transfer amount or insufficient balance.");
+            System.out.println("");
         }
     }
 

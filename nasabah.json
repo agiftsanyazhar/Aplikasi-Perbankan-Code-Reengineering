@@ -3,8 +3,9 @@
     "id": "1",
     "name": "Agiftsany Azhar",
     "email": "agiftsanyazhar@gmail.com",
-    "cardType": "Credit",
-    "accountNumber": "18727575",
+    "password": "25d55ad283aa400af464c76d713c07ad",
+    "cardType": "Debit",
+    "accountNumber": "16584103",
     "balance": 150000
   }
 ]
