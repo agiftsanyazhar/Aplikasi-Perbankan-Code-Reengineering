@@ -12,6 +12,7 @@ public class Register extends Nasabah {
         setBalance(balance);
     }
 
+    // // HASIL BARD! MASIH KURANG PAHAM. JANGAN DIUNCOMMENT
     @Override
     public void setGeneratedPassword(String password) {
         try {

@@ -97,31 +97,31 @@ public class App {
                 // System.out.println("Password: " + register.getPassword());
                 // System.out.println("Generated Password: " + register.getGeneratedPassword());
 
-                // HASIL BARD! MASIH KURANG PAHAM. JANGAN DIUNCOMMENT
-                // Create a new StringBuilder object
-                StringBuilder sb = new StringBuilder();
+                // // HASIL BARD! MASIH KURANG PAHAM. JANGAN DIUNCOMMENT
+                // // Create a new StringBuilder object
+                // StringBuilder sb = new StringBuilder();
 
-                // Append the fields of the Register object to the StringBuilder object in JSON
-                // format
-                sb.append("[");
-                sb.append("{");
-                sb.append("\"id\": \"").append(register.getId()).append("\",");
-                sb.append("\"name\": \"").append(register.getName()).append("\",");
-                sb.append("\"email\": \"").append(register.getEmail()).append("\",");
-                sb.append("\"password\": \"").append(register.getGeneratedPassword()).append("\",");
-                sb.append("\"cardType\": \"").append(register.getCardType()).append("\",");
-                sb.append("\"accountNumber\":\"").append(register.getAccountNumber()).append("\",");
-                sb.append("\"balance\": ").append(register.getBalance());
-                sb.append("}");
-                sb.append("]");
+                // // Append the fields of the Register object to the StringBuilder object in JSON
+                // // format
+                // sb.append("[");
+                // sb.append("{");
+                // sb.append("\"id\": \"").append(register.getId()).append("\",");
+                // sb.append("\"name\": \"").append(register.getName()).append("\",");
+                // sb.append("\"email\": \"").append(register.getEmail()).append("\",");
+                // sb.append("\"password\": \"").append(register.getGeneratedPassword()).append("\",");
+                // sb.append("\"cardType\": \"").append(register.getCardType()).append("\",");
+                // sb.append("\"accountNumber\":\"").append(register.getAccountNumber()).append("\",");
+                // sb.append("\"balance\": ").append(register.getBalance());
+                // sb.append("}");
+                // sb.append("]");
 
-                // Convert the StringBuilder object to a String object
-                String json = sb.toString();
+                // // Convert the StringBuilder object to a String object
+                // String json = sb.toString();
 
-                // Save the String object to a file
-                Writer writer = new FileWriter("nasabah.json");
-                writer.write(json);
-                writer.close();
+                // // Save the String object to a file
+                // Writer writer = new FileWriter("nasabah.json");
+                // writer.write(json);
+                // writer.close();
 
                 scanner.nextLine();
                 System.out.println("");
